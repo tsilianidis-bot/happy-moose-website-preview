@@ -23,6 +23,10 @@ else:
     text = text.replace(old_heading, 'children:["Get loose.",g.jsx("br",{}),"At the ",g.jsx("em",{children:"Moose."})]', 1)
     text = text.replace('" Lake County\'s Go-To Spot for the Big Game"]}),g.jsxs("h1"', '" Mentor\'s neighborhood sports bar"]}),g.jsxs("h1"', 1)
     text = text.replace('The home-field advantage for cold drafts, scratch-made favorites, and every can\'t-miss play.', 'Great wings. Cold drafts. Every big game. Bring your crew to Happy Moose in Mentor.', 1)
+preview_route = 'function Wx(){if(window.location.pathname.endsWith("/index.html"))return g.jsx($x,{});'
+if preview_route not in text:
+    assert text.count('function Wx(){') == 1
+    text = text.replace('function Wx(){', preview_route, 1)
 bundle.write_text(text)
 
 entry = ROOT / 'index.html'
