@@ -1,0 +1,114 @@
+/* Scoped video-hero update. The cinematic intro and all other sections stay intact. */
+.hero {
+  min-height: 720px;
+  height: 100svh;
+  max-height: 1080px;
+  align-items: center;
+  isolation: isolate;
+}
+.hero-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.hero-video,
+.hero-video-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-video-poster {
+  background: #0b0f0d url('./media/happy-moose-hero-poster.jpg') center / cover no-repeat;
+}
+.hero-video {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.hero-video.is-playing { opacity: 1; }
+.hero-scrim {
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(5, 9, 7, .91) 0%, rgba(5, 9, 7, .66) 23%, rgba(5, 9, 7, .12) 48%, transparent 70%),
+    linear-gradient(180deg, rgba(5, 9, 7, .65) 0%, transparent 22%, transparent 76%, rgba(5, 9, 7, .68) 100%);
+}
+.hero-content {
+  z-index: 2;
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+.hero-kicker { max-width: 340px; font-size: 9px; letter-spacing: .15em; }
+.hero h1 {
+  max-width: 430px;
+  font-size: clamp(60px, 6.6vw, 96px);
+  line-height: .93;
+  text-wrap: initial;
+}
+.hero-copy { max-width: 325px; margin-top: 24px; font-size: 14px; }
+.hero-actions { gap: 10px; margin-top: 27px; }
+.hero-actions .button { min-height: 48px; padding: 15px 20px; font-size: 10px; }
+.hero-footer { z-index: 2; }
+.hero-video-control {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  z-index: 4;
+  padding: 11px 16px;
+  border: 1px solid rgba(240, 244, 239, .38);
+  border-radius: 999px;
+  background: rgba(5, 9, 7, .74);
+  color: var(--paper);
+  font: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+.hero-video-control:hover { border-color: var(--green); color: var(--green); }
+.hero-video-control:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+.hero-footer { padding-right: 155px; }
+@media (min-width: 861px) and (max-width: 1150px) {
+  .hero h1 { max-width: 355px; font-size: 76px; }
+  .hero-content { padding-bottom: 40px; }
+}
+@media (max-width: 860px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding-top: 84px;
+    background: #0b0f0d;
+  }
+  .hero-media {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    flex-shrink: 0;
+  }
+  .hero-video { object-fit: contain; }
+  .hero-video-poster { background-size: contain; }
+  .hero-scrim, .hero-diagonal { display: none; }
+  .hero-content {
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 70px;
+  }
+  .hero h1 { max-width: none; font-size: clamp(54px, 10vw, 78px); line-height: .92; }
+  .hero-kicker { max-width: none; margin-bottom: 16px; font-size: 8px; }
+  .hero-copy { max-width: 400px; margin-top: 18px; font-size: 13px; }
+  .hero-actions { margin-top: 23px; }
+  .hero-video-control { right: 12px; bottom: 12px; padding: 8px 12px; font-size: 9px; }
+  .hero-footer { padding-right: 0; bottom: 23px; font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-video { transition: none; }
+}
