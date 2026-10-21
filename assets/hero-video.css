@@ -22,18 +22,18 @@
   object-position: center;
 }
 .hero-video-poster {
-  background: #0b0f0d url('./media/happy-moose-hero-poster.jpg') center / cover no-repeat;
+  background: #0b0f0d url('./media/happy-moose-ambient-poster-v2.jpg') center / cover no-repeat;
 }
 .hero-video {
   pointer-events: none;
   opacity: 0;
-  transition: opacity 300ms ease;
+  transition: opacity 700ms ease;
 }
 .hero-video.is-playing { opacity: 1; }
 .hero-scrim {
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(90deg, rgba(5, 9, 7, .91) 0%, rgba(5, 9, 7, .66) 23%, rgba(5, 9, 7, .12) 48%, transparent 70%),
+  background: linear-gradient(90deg, rgba(5, 9, 7, .88) 0%, rgba(5, 9, 7, .59) 23%, rgba(5, 9, 7, .12) 48%, transparent 70%),
     linear-gradient(180deg, rgba(5, 9, 7, .65) 0%, transparent 22%, transparent 76%, rgba(5, 9, 7, .68) 100%);
 }
 .hero-content {
@@ -55,7 +55,7 @@
 .hero-video-control {
   position: absolute;
   right: 28px;
-  bottom: 28px;
+  top: 108px;
   z-index: 4;
   padding: 11px 16px;
   border: 1px solid rgba(240, 244, 239, .38);
@@ -80,33 +80,37 @@
   .hero {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     align-items: stretch;
-    height: auto;
-    min-height: 0;
-    max-height: none;
+    height: 100svh;
+    min-height: 660px;
+    max-height: 980px;
     padding-top: 84px;
     background: #0b0f0d;
   }
   .hero-media {
-    position: relative;
-    inset: auto;
+    position: absolute;
+    inset: 0;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    flex-shrink: 0;
+    height: 100%;
   }
-  .hero-video { object-fit: contain; }
-  .hero-video-poster { background-size: contain; }
-  .hero-scrim, .hero-diagonal { display: none; }
+  .hero-video { object-fit: cover; object-position: 58% center; }
+  .hero-video-poster { background-size: cover; background-position: 58% center; }
+  .hero-scrim {
+    display: block;
+    background: linear-gradient(180deg, rgba(5, 9, 7, .68), rgba(5, 9, 7, .12) 24%, rgba(5, 9, 7, .28) 42%, rgba(5, 9, 7, .78) 67%, rgba(5, 9, 7, .95));
+  }
+  .hero-diagonal { display: none; }
   .hero-content {
     position: relative;
     padding-top: 30px;
-    padding-bottom: 70px;
+    padding-bottom: 86px;
   }
   .hero h1 { max-width: none; font-size: clamp(54px, 10vw, 78px); line-height: .92; }
   .hero-kicker { max-width: none; margin-bottom: 16px; font-size: 8px; }
   .hero-copy { max-width: 400px; margin-top: 18px; font-size: 13px; }
   .hero-actions { margin-top: 23px; }
-  .hero-video-control { right: 12px; bottom: 12px; padding: 8px 12px; font-size: 9px; }
+  .hero-video-control { right: 18px; top: 96px; padding: 8px 12px; font-size: 9px; }
   .hero-footer { padding-right: 0; bottom: 23px; font-size: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {

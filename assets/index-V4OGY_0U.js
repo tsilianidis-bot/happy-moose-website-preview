@@ -208,8 +208,8 @@ function HappyMooseHeroVideo({ introActive }) {
       g.jsx('video', {
         ref: videoRef,
         className: `hero-video${playing ? ' is-playing' : ''}`,
-        src: './assets/media/happy-moose-hero-v1.mp4',
-        poster: './assets/media/happy-moose-hero-poster.jpg',
+        src: './assets/media/happy-moose-ambient-v2.mp4',
+        poster: './assets/media/happy-moose-ambient-poster-v2.jpg',
         muted: true,
         loop: true,
         playsInline: true,
@@ -219,7 +219,7 @@ function HappyMooseHeroVideo({ introActive }) {
         'aria-hidden': 'true',
         tabIndex: -1,
         onPlaying: () => setPlaying(true),
-        onError: () => { setFailed(true); setPlaying(false); },
+        onError: () => { setFailed(true); setPlaying(false); setPaused(true); },
       }),
       !failed && g.jsx('button', {
         type: 'button',

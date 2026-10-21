@@ -1,14 +1,14 @@
-# Happy Moose — video hero update
+# Happy Moose — refined cinematic background
 
-- [x] Preserve yesterday’s cinematic moose intro and existing website design, navigation, and sections. The cinematic pre-open remains the first visible experience. The original `Jx` intro component is byte-for-byte unchanged.
-- [x] Replace the landing page’s still hero graphic with the supplied `happy_moose_commercial_v6_final.mp4`, playing muted, inline, and looping after the intro completes or is skipped. Keep readable text and working calls to action. The compact “Get loose. At the Moose.” lockup leaves more space for the video.
-- [x] Keep a still fallback only for loading, playback errors, or reduced-motion preference; provide an accessible pause/play control. On mobile, show the full 16:9 commercial above the text rather than cropping or covering its content.
-- [x] Save the cinematic loading screen and full landing page together, including all media, in a single reusable save file.
+- [x] Preserve the existing cinematic moose loading-screen intro, website sections, navigation, and compact hero copy. Original intro component is byte-for-byte unchanged. Intro-to-video timing and motion controls remain intact.
+- [x] Replace the full commercial with a 15.500-second, aesthetically pleasing ambient background using its strongest bar-hospitality, draft-tap, burger-detail, and toast imagery. Exclude promotional text, event/price callouts, closing logo cards, crowded/eating distractions, and ad-style scene changes. Use restrained slowing, consistent color, 0.875-second dissolves, and a circular last-to-first transition.
+- [x] Keep the video secondary to the readable webpage headline, with muted inline looping, accessible pause/play, reduced-motion fallback, and mobile-friendly framing. Desktop playback and readable placement checked. The 390-pixel mobile hero is full-bleed, contains the headline and both action buttons, and has no horizontal overflow.
+- [x] Save the cinematic loading screen and updated landing page with all required media in one complete ZIP file for later use, and save the revision in the existing GitHub preview repository.
 
-## Verification evidence
+## Evidence and maintenance
 
-JavaScript syntax checks passed. The existing intro stays mounted with video paused at time 0 in intro-review mode. After Skip intro and the existing 580 ms exit, playback starts from the beginning. Native muted, inline, and loop properties are enabled; playback advances and wraps from the end to the beginning without error. Pause/play works. A 390-pixel mobile frame shows a 390 × 219.375-pixel video region with `object-fit: contain`, the copy below it, and no horizontal overflow.
+Final H.264 MP4 is 1280 × 720 at 24 fps, 372 decoded frames, no audio, and 3,612,204 bytes. Visual frame review confirms captions and pillarboxes are excluded. The final and initial frames share the same fully framed bar shot; seam change is comparable to normal motion rather than a commercial restart. The edit manifest and reproducible script retain source ranges, crop rectangles, playback speeds, dissolve construction, and output metadata. Original uploaded commercial is untouched. Superseded full-ad video is removed from the current website package to avoid storing an unnecessary second large clip.
 
-## Existing project facts
+## Existing project
 
-Recovered the Oct. 20 preview from `tsilianidis-bot/happy-moose-website-preview`, original commit `65e7edd`. This repository contains the deployed React build and original media rather than original TypeScript sources. A readable, scoped hero component and repeatable patch are retained for maintenance. No Manus website resource was attached to this task. The restaurant’s production domain is unchanged.
+This is the recovered October 20 static React build in `tsilianidis-bot/happy-moose-website-preview`, not the restaurant’s production domain. No Manus website resource is attached. The existing design is retained, not rebuilt. The single save includes both the moose loading screen and video landing page.

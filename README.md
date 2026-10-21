@@ -1,8 +1,8 @@
-# Happy Moose — cinematic intro + video landing page
+# Happy Moose — cinematic intro + ambient video website
 
-This saved package retains the October 20 Happy Moose website and cinematic moose pre-open. The supplied version 6 commercial replaces the still landing-page hero. It preloads during the intro and starts from the beginning after the intro completes or is skipped, playing inline, muted, and looping. The original user-uploaded MP4 remains untouched; the web copy uses the same H.264 video frames with its audio stream removed and fast-start metadata added.
+This saved package retains the October 20 Happy Moose website and cinematic moose pre-open. The full commercial has been replaced with a short, silent ambient loop made only from the supplied version 6 footage. The edit uses the strongest bar-hospitality, draft-tap, burger-detail, and close-up-toast imagery, gently retimed and color matched. Advertising lower-thirds are removed by checked crops or clean timing; crowd/eating distractions, event and price callouts, and the closing logo card are excluded. Soft dissolves include the last-to-first join, so there is no fade to black or obvious commercial restart.
 
-The headline is now a compact “Get loose. At the Moose.” lockup so the moving commercial remains the primary landing-page graphic. Existing site sections, navigation, ordering links, and intro animation are preserved. On mobile, the full 16:9 video sits above the copy rather than cropping the commercial’s text and faces into a portrait background. A pause/play control and reduced-motion fallback are included.
+The background preloads during the intro, then starts after the intro completes or is skipped. The compact “Get loose. At the Moose.” headline, original site sections, navigation, ordering links, and moose intro are preserved. Mobile now uses a full-bleed atmospheric background under a readable gradient rather than presenting the ad as a separate video player. Pause/play, tab-visibility pausing, and reduced-motion fallback remain available.
 
 ## Open the saved website
 
@@ -10,10 +10,12 @@ Unzip the single save file and serve this folder with a static server. For examp
 
 ## Saved together
 
-`index.html`, the original React bundle and styling, all original moose-intro media, the background video and poster, and the new hero styles are included in this one package. No separate loading-screen file is needed.
+`index.html`, the original React bundle and styling, all original cinematic loading-screen assets, the edited ambient loop and matching poster, and the hero styling are included in one complete ZIP. No separate loading-screen file is required. The original uploaded commercial remains untouched and is not included as an unnecessary second large video in the website save.
 
 ## Maintenance
 
-This repository was recovered as the original deployed build; original TypeScript source was not available in this task. The readable hero component is in `src/hero-video-component.js`, with scoped styles in `assets/hero-video.css`. After changing the component, run `python3 src/apply-video-hero.py` to update its block inside the existing build. No other site components are regenerated.
+This repository was recovered as the original deployed build; original TypeScript source was unavailable in this task. The readable hero component is in `src/hero-video-component.js`, with scoped styles in `assets/hero-video.css`. After changing the component, run `python3 src/apply-video-hero.py` to update its block inside the existing build.
 
-The restaurant’s production domain is not changed by this package.
+The reproducible video-edit script is `src/render-ambient-loop.py`; give it a path to the original `happy_moose_commercial_v6_final.mp4`. `src/ambient-loop-edit.json` records selected source ranges, crop rectangles, playback speeds, transitions, and final output metadata. No original footage is overwritten or generated.
+
+The restaurant’s production domain is unchanged by this saved preview revision.

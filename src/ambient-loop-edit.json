@@ -1,0 +1,73 @@
+{
+  "source_filename": "happy_moose_commercial_v6_final.mp4",
+  "output": "assets/media/happy-moose-ambient-v2.mp4",
+  "poster": "assets/media/happy-moose-ambient-poster-v2.jpg",
+  "shots": [
+    {
+      "name": "Warm bar hospitality",
+      "start": 12.2,
+      "end": 13.9,
+      "speed": 0.48,
+      "crop": [
+        896,
+        504,
+        300,
+        0
+      ]
+    },
+    {
+      "name": "Draft taps",
+      "start": 8.08,
+      "end": 9.92,
+      "speed": 0.56,
+      "crop": [
+        896,
+        504,
+        168,
+        0
+      ]
+    },
+    {
+      "name": "Clean burger detail",
+      "start": 22.083333,
+      "end": 22.708333,
+      "speed": 0.25,
+      "crop": [
+        1088,
+        612,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "Close-up toast",
+      "start": 36.3,
+      "end": 43.25,
+      "speed": 0.72,
+      "crop": [
+        896,
+        504,
+        192,
+        24
+      ]
+    }
+  ],
+  "transition": "21-frame soft cross-dissolves including last-to-first",
+  "grade": "Subtle warm bias, reduced saturation, restrained brightness",
+  "audio": "None; silent decorative background",
+  "probe": {
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      }
+    ],
+    "format": {
+      "duration": "15.500000",
+      "size": "3612204"
+    }
+  }
+}
