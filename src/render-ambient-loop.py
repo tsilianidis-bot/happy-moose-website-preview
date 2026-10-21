@@ -12,33 +12,34 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 source = Path(sys.argv[1]) if len(sys.argv) > 1 else Path('/home/ubuntu/upload/happy_moose_commercial_v6_final.mp4')
 assert source.is_file(), f'Missing supplied source: {source}'
-output = ROOT / 'assets/media/happy-moose-ambient-v2.mp4'
-poster = ROOT / 'assets/media/happy-moose-ambient-poster-v2.jpg'
+output = ROOT / 'assets/media/happy-moose-ambient-v3.mp4'
+poster = ROOT / 'assets/media/happy-moose-ambient-poster-v3.jpg'
 
 # Timestamps and reframing checked against full-resolution source frames.
 # The 896x504 frames exclude source pillarboxes and every promotional lower-third.
-# The burger detail is selected only before its advertising caption appears.
+# Frame-accurate native-speed selections avoid repeated-frame slow motion.
 shots = [
-    dict(name='Warm bar hospitality', start=12.20, end=13.90, speed=0.48, crop=[896, 504, 300, 0]),
-    dict(name='Draft taps', start=8.08, end=9.92, speed=0.56, crop=[896, 504, 168, 0]),
-    dict(name='Clean burger detail', start=22.083333, end=22.708333, speed=0.25, crop=[1088, 612, 96, 96]),
-    dict(name='Close-up toast', start=36.30, end=43.25, speed=0.72, crop=[896, 504, 192, 24]),
+    dict(name='Warm bar hospitality', frames=[281, 359], speed=1.0, crop=[896, 504, 300, 0]),
+    dict(name='Draft taps', frames=[194, 238], speed=1.0, crop=[896, 504, 168, 0]),
+    dict(name='Clean burger detail', frames=[530, 564], speed=1.0, crop=[896, 504, 192, 0]),
+    dict(name='Close-up toast', frames=[871, 1014], speed=1.0, crop=[896, 504, 192, 24]),
 ]
 fps = 24
-fade = Fraction(21, fps)  # 0.875 seconds, exactly 21 frames.
+fade = Fraction(10, fps)  # Soft 10-frame dissolves without hiding natural movement.
 filters = ['[0:v]split=4[raw0][raw1][raw2][raw3]']
 lengths = []
 for index, shot in enumerate(shots):
-    frame_count = round((shot['end'] - shot['start']) / shot['speed'] * fps)
+    frame_count = shot['frames'][1] - shot['frames'][0]
     duration = Fraction(frame_count, fps)
     lengths.append(duration)
+    shot['start'] = shot['frames'][0] / fps
+    shot['end'] = shot['frames'][1] / fps
     crop = ':'.join(str(value) for value in shot['crop'])
     filters.append(
-        f"[raw{index}]trim=start={shot['start']}:end={shot['end']},"
-        f"setpts=(PTS-STARTPTS)/{shot['speed']},crop={crop},"
+        f"[raw{index}]trim=start_frame={shot['frames'][0]}:end_frame={shot['frames'][1]},"
+        f"setpts=PTS-STARTPTS,crop={crop},"
         'scale=1280:720:flags=lanczos,setsar=1,'
-        f'fps={fps},tpad=stop_mode=clone:stop_duration=1,'
-        f'trim=duration={float(duration):.9f},setpts=PTS-STARTPTS,'
+        f'fps={fps},setpts=PTS-STARTPTS,'
         'eq=brightness=-0.032:contrast=1.025:saturation=0.84:gamma=0.985,'
         'colorbalance=rs=0.012:bs=-0.006:rm=0.012:bm=-0.012,'
         f'format=yuv420p,settb=1/{fps}[shot{index}]'
@@ -54,7 +55,7 @@ for index in range(1, len(shots)):
     filters.append(f'[{current}][shot{index}]xfade=transition=fade:duration={float(fade):.9f}:offset={float(offset):.9f}[{label}]')
     current = label
     elapsed += lengths[index] - fade
-# Fade the last shot back into the first 21 frames. Start the delivered clip
+# Fade the last shot back into the first 10 frames. Start the delivered clip
 # after that first interval, so its first frame follows its last without a jump.
 filters.append(f'[{current}][wrap]xfade=transition=fade:duration={float(fade):.9f}:offset={float(elapsed-fade):.9f}[circle]')
 loop_duration = elapsed - fade
@@ -82,7 +83,8 @@ manifest = {
     'output': str(output.relative_to(ROOT)),
     'poster': str(poster.relative_to(ROOT)),
     'shots': shots,
-    'transition': '21-frame soft cross-dissolves including last-to-first',
+    'transition': '10-frame soft cross-dissolves including last-to-first',
+    'motion': 'Native 1.0x source speed at 24 fps; no held-frame slowing or browser rate override',
     'grade': 'Subtle warm bias, reduced saturation, restrained brightness',
     'audio': 'None; silent decorative background',
     'probe': probe,

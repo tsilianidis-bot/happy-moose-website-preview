@@ -46,8 +46,8 @@ function HappyMooseHeroVideo({ introActive }) {
       g.jsx('video', {
         ref: videoRef,
         className: `hero-video${playing ? ' is-playing' : ''}`,
-        src: './assets/media/happy-moose-ambient-v2.mp4',
-        poster: './assets/media/happy-moose-ambient-poster-v2.jpg',
+        src: './assets/media/happy-moose-ambient-v3.mp4',
+        poster: './assets/media/happy-moose-ambient-poster-v3.jpg',
         muted: true,
         loop: true,
         playsInline: true,

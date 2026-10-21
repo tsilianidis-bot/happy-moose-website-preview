@@ -1,14 +1,14 @@
-# Happy Moose — refined cinematic background
+# Happy Moose — natural motion correction
 
-- [x] Preserve the existing cinematic moose loading-screen intro, website sections, navigation, and compact hero copy. Original intro component is byte-for-byte unchanged. Intro-to-video timing and motion controls remain intact.
-- [x] Replace the full commercial with a 15.500-second, aesthetically pleasing ambient background using its strongest bar-hospitality, draft-tap, burger-detail, and toast imagery. Exclude promotional text, event/price callouts, closing logo cards, crowded/eating distractions, and ad-style scene changes. Use restrained slowing, consistent color, 0.875-second dissolves, and a circular last-to-first transition.
-- [x] Keep the video secondary to the readable webpage headline, with muted inline looping, accessible pause/play, reduced-motion fallback, and mobile-friendly framing. Desktop playback and readable placement checked. The 390-pixel mobile hero is full-bleed, contains the headline and both action buttons, and has no horizontal overflow.
-- [x] Save the cinematic loading screen and updated landing page with all required media in one complete ZIP file for later use, and save the revision in the existing GitHub preview repository.
+- [x] Preserve the original cinematic moose intro with Skip intro, existing website sections, navigation, and readable hero copy.
+- [x] Correct the background’s lagging appearance by replacing heavy slow-motion retiming with natural 1.0× source motion and regular 24 fps cadence. Keep the refined text-free scenes, soft ten-frame dissolves, and circular loop; no browser playback-rate workaround is used. Also trim the source toast’s final frozen moment.
+- [x] Keep muted inline playback, loop, accessible pause/play, reduced-motion fallback, and full-bleed mobile presentation. Verify regular encoding cadence and browser playback without buffering or held-frame stalls.
+- [x] Save the corrected website in the existing GitHub preview repository and provide one complete ZIP containing both the cinematic loading screen and updated landing page, including all media.
 
-## Evidence and maintenance
+## Diagnosis and verification
 
-Final H.264 MP4 is 1280 × 720 at 24 fps, 372 decoded frames, no audio, and 3,612,204 bytes. Visual frame review confirms captions and pillarboxes are excluded. The final and initial frames share the same fully framed bar shot; seam change is comparable to normal motion rather than a commercial restart. The edit manifest and reproducible script retain source ranges, crop rectangles, playback speeds, dissolve construction, and output metadata. Original uploaded commercial is untouched. Superseded full-ad video is removed from the current website package to avoid storing an unnecessary second large clip.
+The previous file’s heavily slowed clips forced 24 fps by repeating original frames. About 32% of adjacent encoded frame pairs were near-identical in the small-frame comparison, producing the reported lagging appearance. The browser itself ran at 1.0× with no buffering events or dropped frames in the sampled checks. The corrected file uses frame-accurate native-speed selections and no held-frame padding or optical-flow generated faces/hands. Final video: 10.791667 seconds, 1280 × 720, 24 fps, 259 decoded frames, 3,063,347 bytes, silent. All 258 adjacent-frame pairs show motion in the same comparison; no near-identical held frames remain. The original uploaded commercial and intro are unchanged.
 
-## Existing project
+## Project scope
 
-This is the recovered October 20 static React build in `tsilianidis-bot/happy-moose-website-preview`, not the restaurant’s production domain. No Manus website resource is attached. The existing design is retained, not rebuilt. The single save includes both the moose loading screen and video landing page.
+Existing recovered October 20 React static build: `tsilianidis-bot/happy-moose-website-preview`. No new design or project is needed; the restaurant’s production domain remains unchanged. Existing cinematic intro and Skip intro continue to appear on entry. The single saved ZIP includes the complete loading-screen and website together.

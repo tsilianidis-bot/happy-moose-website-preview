@@ -1,58 +1,75 @@
 {
   "source_filename": "happy_moose_commercial_v6_final.mp4",
-  "output": "assets/media/happy-moose-ambient-v2.mp4",
-  "poster": "assets/media/happy-moose-ambient-poster-v2.jpg",
+  "output": "assets/media/happy-moose-ambient-v3.mp4",
+  "poster": "assets/media/happy-moose-ambient-poster-v3.jpg",
   "shots": [
     {
       "name": "Warm bar hospitality",
-      "start": 12.2,
-      "end": 13.9,
-      "speed": 0.48,
+      "frames": [
+        281,
+        359
+      ],
+      "speed": 1.0,
       "crop": [
         896,
         504,
         300,
         0
-      ]
+      ],
+      "start": 11.708333333333334,
+      "end": 14.958333333333334
     },
     {
       "name": "Draft taps",
-      "start": 8.08,
-      "end": 9.92,
-      "speed": 0.56,
+      "frames": [
+        194,
+        238
+      ],
+      "speed": 1.0,
       "crop": [
         896,
         504,
         168,
         0
-      ]
+      ],
+      "start": 8.083333333333334,
+      "end": 9.916666666666666
     },
     {
       "name": "Clean burger detail",
-      "start": 22.083333,
-      "end": 22.708333,
-      "speed": 0.25,
+      "frames": [
+        530,
+        564
+      ],
+      "speed": 1.0,
       "crop": [
-        1088,
-        612,
-        96,
-        96
-      ]
+        896,
+        504,
+        192,
+        0
+      ],
+      "start": 22.083333333333332,
+      "end": 23.5
     },
     {
       "name": "Close-up toast",
-      "start": 36.3,
-      "end": 43.25,
-      "speed": 0.72,
+      "frames": [
+        871,
+        1014
+      ],
+      "speed": 1.0,
       "crop": [
         896,
         504,
         192,
         24
-      ]
+      ],
+      "start": 36.291666666666664,
+      "end": 42.25
     }
   ],
-  "transition": "21-frame soft cross-dissolves including last-to-first",
+  "transition": "10-frame soft cross-dissolves including last-to-first",
+  "motion": "Native 1.0x source speed at 24 fps; no held-frame slowing or browser rate override",
   "grade": "Subtle warm bias, reduced saturation, restrained brightness",
   "audio": "None; silent decorative background",
   "probe": {
@@ -66,8 +83,8 @@
       }
     ],
     "format": {
-      "duration": "15.500000",
-      "size": "3612204"
+      "duration": "10.791667",
+      "size": "3063347"
     }
   }
 }
